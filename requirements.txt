@@ -5,13 +5,11 @@ chardet==3.0.4
 click==7.1.1
 dataclasses==0.6
 docutils==0.16
-enforce-pep8==0.0.5
 idna==2.9
 keyring==21.2.1
 packaging==20.4
 pkginfo==1.5.0.1
 Pygments==2.6.1
-pypans==0.0.13
 pyparsing==2.4.7
 PyYAML==5.3.1
 readme-renderer==26.0
@@ -23,3 +21,4 @@ tqdm==4.46.0
 twine==3.1.1
 urllib3==1.25.9
 webencodings==0.5.1
+enforce-pep8==0.0.8

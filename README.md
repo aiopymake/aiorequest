@@ -18,6 +18,7 @@
 > Provides asynchronous user-friendly micro HTTP client with nothing but clean objects.
 
 > Basically, it is a wrapper over **requests** python library with async/await approach.
+> Represents asynchronous version of [urequest](https://github.com/upymake/urequest) package.
 
 ## Tools
 
@@ -51,14 +52,18 @@ pip install aiorequest
 >>> from aiorequest.responses import Response
 >>> from aiorequest.urls import HttpUrl
 >>>
->>> async def request() -> None:
+>>>
+>>> async def aioresponse() -> None:
 ...     session: Session
 ...     async with HttpSession() as session:
-...         response: Response = await session.get(HttpUrl(host="xkcd.com", path="info.0.json"))
+...         response: Response = await session.get(
+...             HttpUrl(host="xkcd.com", path="info.0.json")
+...         )
 ...         print(await response.is_ok())
 ...         print(await response.as_json())
 ...
->>> asyncio.run(request())
+>>>
+>>> asyncio.run(aioresponse())
 True
 {
     "month": "3",
@@ -79,7 +84,7 @@ True
 
 ```bash
 git clone git@github.com:aiopymake/aiorequest.git
-pip install -e .
+python setup.py install
 ```
 
 Or using specific release:

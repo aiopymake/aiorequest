@@ -63,8 +63,14 @@ pip install git+https://github.com/aiopymake/aiorequest@0.0.1
 
 ```bash
 git clone git@github.com:aiopymake/aiorequest.git
-python -m aiorequest
 ```
+
+```python
+>>> import aiorequest
+>>> aiorequest.__doc__
+'Package provides asynchronous user-friendly HTTP client with clean objects.'
+```
+
 **[⬆ back to top](#aiorequest)**
 
 ## Development notes

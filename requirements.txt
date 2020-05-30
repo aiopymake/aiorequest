@@ -21,7 +21,5 @@ six==1.15.0
 termcolor==1.1.0
 tqdm==4.46.0
 twine==3.1.1
-urequest==0.0.5
 urllib3==1.25.9
-uyaml==0.0.6
 webencodings==0.5.1

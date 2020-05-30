@@ -47,7 +47,6 @@ if __name__ == "__main__":
         include_package_data=True,
         install_requires=__requirements(),
         classifiers=(
-            "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: 3.7",
             "Programming Language :: Python :: 3.8",
             f"License :: OSI Approved :: {__license} License",

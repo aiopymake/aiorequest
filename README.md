@@ -24,7 +24,7 @@
 
 ## Tools
 
-- python 3.6, 3.7, 3.8
+- python 3.7, 3.8
 - [asyncio](https://docs.python.org/3/library/asyncio.html) library
 - [requests](https://requests.readthedocs.io/en/master) library
 - [travis](https://travis-ci.org/) CI

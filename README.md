@@ -20,11 +20,11 @@
 > Provides asynchronous user-friendly micro HTTP client with nothing but clean objects.
 
 > Basically, it is a wrapper over **requests** python library with async/await approach.
-> Represents asynchronous version of [urequest](https://github.com/upymake/urequest) package.
+> Represents asynchronous version of [urequest](https://upymake.github.io/urequest/) package.
 
 ## Tools
 
-- python 3.7, 3.8
+- python 3.6, 3.7, 3.8
 - [asyncio](https://docs.python.org/3/library/asyncio.html) library
 - [requests](https://requests.readthedocs.io/en/master) library
 - [travis](https://travis-ci.org/) CI
@@ -154,5 +154,10 @@ I would highly appreciate any contribution and support. If you are interested to
 6. Commit your changes (git commit -am 'Add some fooBar')
 7. Push to the branch (git push origin feature/fooBar)
 8. Create a new Pull Request
+
+### What's next
+
+All recent activities and ideas are described at project [issues](https://github.com/aiopymake/aiorequest/issues) page. 
+If you have ideas you want to change/implement please do not hesitate and create an issue.
 
 **[⬆ back to top](#aiorequest)**

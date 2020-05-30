@@ -18,7 +18,7 @@ pytestmark = [unit, asyncio]
         ),
         pytest.param(
             HTTPStatus.OK,
-            (HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.UNAVAILABLE_FOR_LEGAL_REASONS),
+            (HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.ACCEPTED),
             id="success",
         ),
         pytest.param(

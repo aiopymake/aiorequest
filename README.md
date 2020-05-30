@@ -12,6 +12,8 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![CodeFactor](https://www.codefactor.io/repository/github/aiopymake/aiorequest/badge)](https://www.codefactor.io/repository/github/aiopymake/aiorequest)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/aiorequest.svg)](https://pypi.python.org/pypi/aiorequest/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/aiorequest.svg)](https://pypi.python.org/pypi/aiorequest/)
 
 # aioRequest
 

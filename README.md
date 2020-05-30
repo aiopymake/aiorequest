@@ -51,14 +51,14 @@ pip install aiorequest
 >>> from aiorequest.responses import Response
 >>> from aiorequest.urls import HttpUrl
 >>>
->>> async def demo() -> None:
+>>> async def request() -> None:
 ...     session: Session
-...        async with HttpSession() as session:
-...            response: Response = await session.get(HttpUrl(host="xkcd.com", path="info.0.json"))
-...            print(await response.is_ok())
-...            print(await response.as_json())
+...     async with HttpSession() as session:
+...         response: Response = await session.get(HttpUrl(host="xkcd.com", path="info.0.json"))
+...         print(await response.is_ok())
+...         print(await response.as_json())
 ...
->>> asyncio.run(demo())
+>>> asyncio.run(request())
 True
 {
     "month": "3",

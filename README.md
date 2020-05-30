@@ -17,11 +17,11 @@
 
 > Provides asynchronous user-friendly micro HTTP client with nothing but clean objects.
 
-> Basically, it is a wrapper over **requests** python library but with async/await approach.
+> Basically, it is a wrapper over **requests** python library with async/await approach.
 
 ## Tools
 
-- python 3.6, 3.7, 3.8
+- python 3.7, 3.8
 - [asyncio](https://docs.python.org/3/library/asyncio.html) library
 - [requests](https://requests.readthedocs.io/en/master) library
 - [travis](https://travis-ci.org/) CI

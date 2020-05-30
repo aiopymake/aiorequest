@@ -45,7 +45,35 @@ pip install aiorequest
 
 ### Quick start
 
-TBD
+```python
+>>> import asyncio
+>>> from aiorequest.sessions import Session, HttpSession
+>>> from aiorequest.responses import Response
+>>> from aiorequest.urls import HttpUrl
+>>>
+>>> async def demo() -> None:
+...     session: Session
+...        async with HttpSession() as session:
+...            response: Response = await session.get(HttpUrl(host="xkcd.com", path="info.0.json"))
+...            print(await response.is_ok())
+...            print(await response.as_json())
+...
+>>> asyncio.run(demo())
+True
+{
+    "month": "3",
+    "num": 2284,
+    "link": "",
+    "year": "2020",
+    "news": "",
+    "safe_title": "Sabotage",
+    "transcript": "",
+    "alt": "So excited to see everyone after my cruise home from the World Handshake Championships!",
+    "img": "https://imgs.xkcd.com/comics/sabotage.png",
+    "title": "Sabotage",
+    "day": "23",
+}
+```
 
 ### Source code
 

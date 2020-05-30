@@ -16,14 +16,14 @@ def credentials() -> Credentials:
 
 
 @pytest.fixture(scope="session")
-def session() -> Session:
+async def session() -> Session:
     http_session: Session
     async with HttpSession() as http_session:
         yield http_session
 
 
 @pytest.fixture(scope="session")
-def logged_session(credentials: Credentials) -> Session:
+async def logged_session(credentials: Credentials) -> Session:
     logged_http_session: Session
     async with LoggedHttpSession(credentials) as logged_http_session:
         yield logged_http_session

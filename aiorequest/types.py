@@ -24,6 +24,11 @@ class Credentials(AbstractStyle):
         """Returns a password."""
         pass
 
+    @abstractmethod
+    async def as_str(self) -> str:
+        """Returns credentials string representation."""
+        pass
+
 
 class AuthCredentials(Credentials):
     """The class represents authorization credentials."""
@@ -41,3 +46,10 @@ class AuthCredentials(Credentials):
     async def password(self) -> str:
         """Returns auth password."""
         return self._password
+
+    async def as_str(self) -> str:
+        """Returns auth credentials string representation."""
+        return (
+            f"{self.__class__.__name__}"
+            f"(username='{await self.username}', password='{await self.password}')"
+        )

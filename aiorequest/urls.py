@@ -16,7 +16,7 @@ class Address(AbstractStyle):
         pass
 
     @abstractstyle
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """Returns address as a string."""
         pass
 
@@ -37,7 +37,7 @@ class Url(Address):
         """See base class."""
         return self._host
 
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """See base class."""
         if self._host.startswith(self._protocol):
             return self._host
@@ -61,9 +61,9 @@ class HttpUrl(Address):
         """See base class."""
         return await self._http.host()
 
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """See base class."""
-        return str(self._http)
+        return await self._http.as_str()
 
 
 class HttpsUrl(Address):
@@ -80,6 +80,6 @@ class HttpsUrl(Address):
         """See base class."""
         return await self._https.host()
 
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """See base class."""
-        return str(self._https)
+        return await self._https.as_str()

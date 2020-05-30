@@ -6,12 +6,12 @@ from aiorequest.urls import Address, HttpUrl
 
 
 @pytest.fixture(scope="session")
-def session_url() -> Address:
-    return HttpUrl(host="xkcd.com", path="info.0.json")
+async def session_url() -> Address:
+    yield HttpUrl(host="xkcd.com", path="info.0.json")
 
 
 @pytest.fixture(scope="session")
-def credentials() -> Credentials:
+async def credentials() -> Credentials:
     yield AuthCredentials(username="superuser", password="superpass")
 
 
@@ -25,15 +25,17 @@ async def session() -> Session:
 @pytest.fixture(scope="session")
 async def logged_session(credentials: Credentials) -> Session:
     logged_http_session: Session
-    async with LoggedHttpSession(credentials) as logged_http_session:
+    async with LoggedHttpSession(
+        await credentials.username, await credentials.password
+    ) as logged_http_session:
         yield logged_http_session
 
 
 @pytest.fixture(scope="session")
-def response(session: Session, session_url: Address) -> Response:
-    yield session.get(session_url)
+async def response(session: Session, session_url: Address) -> Response:
+    yield await session.get(session_url)
 
 
 @pytest.fixture(scope="session")
-def logged_response(logged_session: Session, session_url: Address) -> Response:
-    yield logged_session.get(session_url)
+async def logged_response(logged_session: Session, session_url: Address) -> Response:
+    yield await logged_session.get(session_url)

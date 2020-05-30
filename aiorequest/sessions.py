@@ -5,7 +5,7 @@ from typing import Any, AsyncContextManager, Optional, Type
 import requests
 from punish import AbstractStyle
 from requests.auth import HTTPBasicAuth
-from aiorequest.types import Credentials, OptionalAnyDict, OptionalStr
+from aiorequest.types import OptionalAnyDict, OptionalStr
 from aiorequest.responses import HttpResponse, Response, safe_response
 from aiorequest.urls import Address
 
@@ -127,15 +127,17 @@ class HttpSession(Session):
 
     async def get(self, url: Address, **kwargs: Any) -> Response:
         """See base class."""
-        return await safe_response(HttpResponse(self._session.get(str(url), **kwargs)))
+        return await safe_response(HttpResponse(self._session.get(await url.as_str(), **kwargs)))
 
     async def options(self, url: Address, **kwargs: Any) -> Response:
         """See base class."""
-        return await safe_response(HttpResponse(self._session.options(str(url), **kwargs)))
+        return await safe_response(
+            HttpResponse(self._session.options(await url.as_str(), **kwargs))
+        )
 
     async def head(self, url: Address, **kwargs: Any) -> Response:
         """See base class."""
-        return await safe_response(HttpResponse(self._session.head(str(url), **kwargs)))
+        return await safe_response(HttpResponse(self._session.head(await url.as_str(), **kwargs)))
 
     async def post(
         self,
@@ -191,14 +193,14 @@ class LoggedHttpSession(Session):
     """The class provides logged HTTP session."""
 
     def __init__(
-        self, credentials: Credentials, session: requests.Session = requests.Session()
+        self, username: str, password: str, session: requests.Session = requests.Session()
     ) -> None:
-        session.auth = HTTPBasicAuth(credentials.username, credentials.password)
+        session.auth = HTTPBasicAuth(username, password)
         self._session: Session = HttpSession(session)
 
     async def __aenter__(self) -> Any:
         """See base class."""
-        return self._session.__aenter__()
+        return await self._session.__aenter__()
 
     async def get(self, url: Address, **kwargs: Any) -> Response:
         """See base class."""

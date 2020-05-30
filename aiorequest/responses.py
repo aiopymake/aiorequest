@@ -1,5 +1,6 @@
 """The module contains a set of API for HTTP responses types."""
 from typing import Iterable
+from http import HTTPStatus
 import requests
 from punish import AbstractStyle, abstractstyle
 from aiorequest.types import AnyUnionDict
@@ -22,7 +23,7 @@ class Response(AbstractStyle):
         pass
 
     @abstractstyle
-    async def code(self) -> int:
+    async def code(self) -> HTTPStatus:
         """Returns HTTP response status code."""
         pass
 
@@ -32,7 +33,7 @@ class Response(AbstractStyle):
         pass
 
     @abstractstyle
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """Returns HTTP response data as plain data type."""
         pass
 
@@ -47,21 +48,22 @@ class HttpResponse(Response):
         """See base class."""
         return self._response.ok
 
-    async def code(self) -> int:
+    async def code(self) -> HTTPStatus:
         """See base class."""
-        return self._response.status_code
+        return HTTPStatus(self._response.status_code)
 
     async def as_json(self) -> JsonType:
         """See base class."""
         return self._response.json()
 
-    def __str__(self) -> str:
+    async def as_str(self) -> str:
         """See base class."""
         return self._response.text
 
 
 async def safe_response(
-    response: Response, success_codes: Iterable[int] = (200, 201, 204)
+    response: Response,
+    success_codes: Iterable[int] = (HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.NO_CONTENT),
 ) -> Response:
     """Specifies safe response from iterable of success HTTP status codes.
 
@@ -76,6 +78,6 @@ async def safe_response(
     if await response.code() not in success_codes:
         raise ResponseError(
             f"HTTP response contains some errors with '{await response.code()}' status code! "
-            f"Reason: {response}"
+            f"Reason: {await response.as_str()}"
         )
     return response

@@ -51,6 +51,7 @@ pip install aiorequest
 >>> from aiorequest.responses import Response
 >>> from aiorequest.urls import HttpUrl
 >>>
+>>>
 >>> async def request() -> None:
 ...     session: Session
 ...     async with HttpSession() as session:

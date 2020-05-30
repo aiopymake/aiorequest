@@ -122,15 +122,19 @@ class HttpSession(Session):
         self._session: requests.Session = session
 
     async def __aenter__(self) -> Session:
+        """See base class."""
         return self
 
     async def get(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await safe_response(HttpResponse(self._session.get(str(url), **kwargs)))
 
     async def options(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await safe_response(HttpResponse(self._session.options(str(url), **kwargs)))
 
     async def head(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await safe_response(HttpResponse(self._session.head(str(url), **kwargs)))
 
     async def post(
@@ -140,6 +144,7 @@ class HttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await safe_response(
             HttpResponse(self._session.post(str(url), data=plain, json=as_dict, **kwargs))
         )
@@ -151,6 +156,7 @@ class HttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await safe_response(
             HttpResponse(self._session.put(str(url), data=plain, json=as_dict, **kwargs))
         )
@@ -162,11 +168,13 @@ class HttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await safe_response(
             HttpResponse(self._session.patch(str(url), data=plain, json=as_dict, **kwargs))
         )
 
     async def delete(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await safe_response(HttpResponse(self._session.delete(str(url), **kwargs)))
 
     async def __aexit__(
@@ -175,6 +183,7 @@ class HttpSession(Session):
         exc_value: Optional[BaseException],
         traceback: Optional[TracebackType],
     ) -> None:
+        """See base class."""
         self._session.close()
 
 
@@ -188,15 +197,19 @@ class LoggedHttpSession(Session):
         self._session: Session = HttpSession(session)
 
     async def __aenter__(self) -> Any:
+        """See base class."""
         return self._session.__aenter__()
 
     async def get(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await self._session.get(url, **kwargs)
 
     async def options(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await self._session.options(url, **kwargs)
 
     async def head(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await self._session.head(url, **kwargs)
 
     async def post(
@@ -206,6 +219,7 @@ class LoggedHttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await self._session.post(url, plain, as_dict, **kwargs)
 
     async def put(
@@ -215,6 +229,7 @@ class LoggedHttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await self._session.post(url, plain, as_dict, **kwargs)
 
     async def patch(
@@ -224,9 +239,11 @@ class LoggedHttpSession(Session):
         as_dict: OptionalAnyDict = None,
         **kwargs: Any,
     ) -> Response:
+        """See base class."""
         return await self._session.patch(url, plain, as_dict, **kwargs)
 
     async def delete(self, url: Address, **kwargs: Any) -> Response:
+        """See base class."""
         return await self._session.delete(url, **kwargs)
 
     async def __aexit__(
@@ -235,4 +252,5 @@ class LoggedHttpSession(Session):
         exception_value: Optional[BaseException],
         traceback: Optional[TracebackType],
     ) -> None:
+        """See base class."""
         await self._session.__aexit__(exception_type, exception_value, traceback)

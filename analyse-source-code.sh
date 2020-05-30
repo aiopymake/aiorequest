@@ -64,7 +64,7 @@ check-unittests() {
 :<<DOC
     Runs unittests using "pytest" framework
 DOC
-    pretty-printer-box "unitests" && pytest
+    pretty-printer-box "unittests" && pytest
 }
 
 
@@ -90,7 +90,7 @@ DOC
       check-pymanifest && \
       check-unittests
     )
-    return 0
+    [[ $? -ne 0 ]] && return 100
 }
 
 main

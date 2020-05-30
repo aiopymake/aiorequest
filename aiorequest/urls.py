@@ -30,12 +30,15 @@ class Url(Address):
         self._protocol = protocol
 
     async def matcher(self) -> str:
+        """See base class."""
         return self._path
 
     async def host(self) -> str:
+        """See base class."""
         return self._host
 
     def __str__(self) -> str:
+        """See base class."""
         if self._host.startswith(self._protocol):
             return self._host
         return (
@@ -51,12 +54,15 @@ class HttpUrl(Address):
         self._http: Url = Url(host, protocol="http", path=path)
 
     async def matcher(self) -> str:
+        """See base class."""
         return await self._http.matcher()
 
     async def host(self) -> str:
+        """See base class."""
         return await self._http.host()
 
     def __str__(self) -> str:
+        """See base class."""
         return str(self._http)
 
 
@@ -67,10 +73,13 @@ class HttpsUrl(Address):
         self._https: Url = Url(host, protocol="https", path=path)
 
     async def matcher(self) -> str:
+        """See base class."""
         return await self._https.matcher()
 
     async def host(self) -> str:
+        """See base class."""
         return await self._https.host()
 
     def __str__(self) -> str:
+        """See base class."""
         return str(self._https)

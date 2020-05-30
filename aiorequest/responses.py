@@ -44,15 +44,19 @@ class HttpResponse(Response):
         self._response: requests.Response = response
 
     async def is_ok(self) -> bool:
+        """See base class."""
         return self._response.ok
 
     async def code(self) -> int:
+        """See base class."""
         return self._response.status_code
 
     async def as_json(self) -> JsonType:
+        """See base class."""
         return self._response.json()
 
     def __str__(self) -> str:
+        """See base class."""
         return self._response.text
 
 

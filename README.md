@@ -50,36 +50,38 @@ pip install aiorequest
 
 ```python
 >>> import asyncio
+>>> from typing import Tuple
 >>> from aiorequest.sessions import Session, HttpSession
->>> from aiorequest.responses import Response
+>>> from aiorequest.responses import Response, JsonType
 >>> from aiorequest.urls import HttpUrl
 >>>
 >>>
->>> async def aioresponse() -> None:
+>>> async def aioresponse() -> Tuple[bool, JsonType]:
 ...     session: Session
 ...     async with HttpSession() as session:
 ...         response: Response = await session.get(
 ...             HttpUrl(host="xkcd.com", path="info.0.json")
 ...         )
-...         print(await response.is_ok())
-...         print(await response.as_json())
-...
+...         return await response.is_ok(), await response.as_json()
+... 
+... 
 >>>
 >>> asyncio.run(aioresponse())
-True
-{
-    "month": "3",
-    "num": 2284,
-    "link": "",
-    "year": "2020",
-    "news": "",
-    "safe_title": "Sabotage",
-    "transcript": "",
-    "alt": "So excited to see everyone after my cruise home from the World Handshake Championships!",
-    "img": "https://imgs.xkcd.com/comics/sabotage.png",
-    "title": "Sabotage",
-    "day": "23",
-}
+(
+  True,
+  {
+      "month": "3",
+      "num": 2284,
+      "link": "",
+      "year": "2020",
+      "news": "",
+      "safe_title": "Sabotage",
+      "transcript": "",
+      "img": "https://imgs.xkcd.com/comics/sabotage.png",
+      "title": "Sabotage",
+      "day": "23",
+  }
+)
 ```
 
 ### Source code

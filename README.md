@@ -52,34 +52,34 @@ pip install aiorequest
 >>> import asyncio
 >>> from typing import Tuple
 >>> from aiorequest.sessions import Session, HttpSession
->>> from aiorequest.responses import Response, JsonType
+>>> from aiorequest.responses import HTTPStatus, Response, JsonType
 >>> from aiorequest.urls import HttpUrl
 >>>
 >>>
->>> async def aioresponse() -> Tuple[bool, JsonType]:
+>>> async def aioresponse() -> Tuple[HTTPStatus, JsonType]:
 ...     session: Session
 ...     async with HttpSession() as session:
 ...         response: Response = await session.get(
 ...             HttpUrl(host="xkcd.com", path="info.0.json")
 ...         )
-...         return await response.is_ok(), await response.as_json()
+...         return await response.status(), await response.as_json()
 ... 
 ... 
 >>>
 >>> asyncio.run(aioresponse())
 (
-  True,
+  <HTTPStatus.OK: 200>,
   {
-      "month": "3",
-      "num": 2284,
-      "link": "",
-      "year": "2020",
-      "news": "",
-      "safe_title": "Sabotage",
-      "transcript": "",
-      "img": "https://imgs.xkcd.com/comics/sabotage.png",
-      "title": "Sabotage",
-      "day": "23",
+    "month": "3",
+    "num": 2284,
+    "link": "",
+    "year": "2020",
+    "news": "",
+    "safe_title": "Sabotage",
+    "transcript": "",
+    "img": "https://imgs.xkcd.com/comics/sabotage.png",
+    "title": "Sabotage",
+    "day": "23",
   }
 )
 ```

@@ -1,11 +1,12 @@
 """The module contains a set of API for HTTP responses types."""
 from typing import Iterable
-from http import HTTPStatus
+import http
 import requests
 from punish import AbstractStyle, abstractstyle
 from aiorequest.types import AnyUnionDict
 
 JsonType = AnyUnionDict
+HTTPStatus = http.HTTPStatus
 
 
 class ResponseError(Exception):
@@ -23,8 +24,8 @@ class Response(AbstractStyle):
         pass
 
     @abstractstyle
-    async def code(self) -> HTTPStatus:
-        """Returns HTTP response status code."""
+    async def status(self) -> HTTPStatus:
+        """Returns HTTP response status."""
         pass
 
     @abstractstyle
@@ -48,7 +49,7 @@ class HttpResponse(Response):
         """See base class."""
         return self._response.ok
 
-    async def code(self) -> HTTPStatus:
+    async def status(self) -> HTTPStatus:
         """See base class."""
         return HTTPStatus(self._response.status_code)
 
@@ -75,9 +76,9 @@ async def safe_response(
         `ResponseError` if HTTP response contains a set of errors
     Returns: a response
     """
-    if await response.code() not in success_codes:
+    if await response.status() not in success_codes:
         raise ResponseError(
-            f"HTTP response contains some errors with '{await response.code()}' status code! "
+            f"HTTP response contains some errors with '{await response.status()}' status! "
             f"Reason: {await response.as_str()}"
         )
     return response

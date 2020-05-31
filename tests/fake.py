@@ -1,5 +1,4 @@
-from http import HTTPStatus
-from aiorequest.responses import JsonType, Response
+from aiorequest.responses import HTTPStatus, JsonType, Response
 
 
 class FakeHttpResponse(Response):
@@ -16,7 +15,7 @@ class FakeHttpResponse(Response):
     async def is_ok(self) -> bool:
         return self._is_ok
 
-    async def code(self) -> HTTPStatus:
+    async def status(self) -> HTTPStatus:
         return self._code
 
     async def as_json(self) -> JsonType:

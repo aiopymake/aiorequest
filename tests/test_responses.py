@@ -1,15 +1,14 @@
-from http import HTTPStatus
 from typing import Iterable
 import pytest
 from tests.fake import FakeHttpResponse
-from aiorequest.responses import Response, ResponseError, safe_response
+from aiorequest.responses import HTTPStatus, Response, ResponseError, safe_response
 from tests.markers import asyncio, unit
 
 pytestmark = [unit, asyncio]
 
 
 @pytest.mark.parametrize(  # noqa: PT006, PT007
-    "code, expected",
+    "status, expected",
     (
         pytest.param(
             HTTPStatus.CONTINUE,
@@ -17,9 +16,7 @@ pytestmark = [unit, asyncio]
             id="info",
         ),
         pytest.param(
-            HTTPStatus.OK,
-            (HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.ACCEPTED),
-            id="success",
+            HTTPStatus.OK, (HTTPStatus.OK, HTTPStatus.CREATED, HTTPStatus.ACCEPTED), id="success",
         ),
         pytest.param(
             HTTPStatus.MULTIPLE_CHOICES,
@@ -38,8 +35,10 @@ pytestmark = [unit, asyncio]
         ),
     ),
 )
-async def test_safe_response_code(code: HTTPStatus, expected: Iterable[int]) -> None:
-    assert isinstance(await safe_response(FakeHttpResponse(code), success_codes=expected), Response)
+async def test_safe_response_code(status: HTTPStatus, expected: Iterable[int]) -> None:
+    assert isinstance(
+        await safe_response(FakeHttpResponse(status), success_codes=expected), Response
+    )
 
 
 async def test_safe_response_error() -> None:
@@ -59,7 +58,7 @@ async def test_response_is_ok(response: Response) -> None:
 
 
 async def test_response_code(response: Response) -> None:
-    assert await response.code() is HTTPStatus.OK
+    assert await response.status() is HTTPStatus.OK
 
 
 async def test_response_text(response: Response) -> None:
@@ -75,7 +74,7 @@ async def test_logged_response_is_ok(logged_response: Response) -> None:
 
 
 async def test_logged_response_code(logged_response: Response) -> None:
-    assert await logged_response.code() is HTTPStatus.OK
+    assert await logged_response.status() is HTTPStatus.OK
 
 
 async def test_logged_response_text(logged_response: Response) -> None:

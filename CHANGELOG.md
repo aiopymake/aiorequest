@@ -1,6 +1,14 @@
 Versions
 ========
 
+0.0.2
+========
+
+_Release date: 13.09.20_
+
+- Implement aiorequest package tests
+- Define project metadata within travis CI
+
 0.0.1
 ========
 

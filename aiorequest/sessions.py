@@ -20,6 +20,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
         Args:
             url: url path used to perform a request
             kwargs: keyword arguments
+
         Returns: response element
         """
         pass
@@ -31,6 +32,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
         Args:
             url: url path used to perform a request
             kwargs: keyword arguments
+
         Returns: response element
         """
         pass
@@ -42,6 +44,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
         Args:
             url: url path used to perform a request
             kwargs: keyword arguments
+
         Returns: response element
         """
         pass
@@ -61,6 +64,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
             plain: requested data as a plain text
             as_dict: requested data as dictionary (json)
             kwargs: other keyword arguments
+
         Returns: response element
         """
         pass
@@ -80,6 +84,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
             plain: requested data as a plain text
             as_dict: requested data as dictionary (json)
             kwargs: other keyword arguments
+
         Returns: response element
         """
         pass
@@ -99,6 +104,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
             plain: requested data as a plain text
             as_dict: requested data as dictionary (json)
             kwargs: other keyword arguments
+
         Returns: response element
         """
         pass
@@ -110,6 +116,7 @@ class Session(AbstractStyle, AsyncContextManager["Session"]):
         Args:
             url: url path used to perform a request
             kwargs: keyword arguments
+
         Returns: response element
         """
         pass

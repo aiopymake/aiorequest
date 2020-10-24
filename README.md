@@ -24,18 +24,22 @@
 
 ## Tools
 
+### Production
+
 - python 3.7, 3.8
 - [asyncio](https://docs.python.org/3/library/asyncio.html) library
 - [requests](https://requests.readthedocs.io/en/master) library
+
+### Development
+
 - [travis](https://travis-ci.org/) CI
-- code analysis
-  - [pytest](https://pypi.org/project/pytest/)
-  - [black](https://black.readthedocs.io/en/stable/)
-  - [mypy](http://mypy.readthedocs.io/en/latest)
-  - [pylint](https://www.pylint.org/)
-  - [flake8](http://flake8.pycqa.org/en/latest/)
-  - [pydocstyle](https://github.com/PyCQA/pydocstyle)
-  - [interrogate](https://interrogate.readthedocs.io/en/latest)
+- [pytest](https://pypi.org/project/pytest/)
+- [black](https://black.readthedocs.io/en/stable/)
+- [mypy](http://mypy.readthedocs.io/en/latest)
+- [pylint](https://www.pylint.org/)
+- [flake8](http://flake8.pycqa.org/en/latest/)
+- [pydocstyle](https://github.com/PyCQA/pydocstyle)
+- [interrogate](https://interrogate.readthedocs.io/en/latest)
 
 ## Usage
 

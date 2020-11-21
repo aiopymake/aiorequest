@@ -40,6 +40,7 @@
 - [flake8](http://flake8.pycqa.org/en/latest/)
 - [pydocstyle](https://github.com/PyCQA/pydocstyle)
 - [interrogate](https://interrogate.readthedocs.io/en/latest)
+- [bats](https://github.com/bats-core/bats-core)
 
 ## Usage
 
@@ -133,6 +134,14 @@ To be able to run code analysis, please execute command below:
 ```bash
 ./analyse-source-code.sh
 ```
+
+The package is also covered with the installation unit tests based on [bats](https://github.com/bats-core/bats-core) framework. Please run the following command to launch package unit tests:
+```bash
+bats --pretty test-package.bats
+```
+
+> `PACKAGE_NAME` and `PACKAGE_VERSION` environment variables should be specified prelimirary.
+
 ### Release notes
 
 Please check [changelog](CHANGELOG.md) file to get more details about actual versions and it's release notes.

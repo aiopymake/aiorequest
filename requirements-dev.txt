@@ -1,6 +1,5 @@
 attrs==19.3.0
 black==19.10b0
-bpython==0.19
 check-manifest==0.42
 coverage==5.1
 coveralls==2.0.0
@@ -21,10 +20,7 @@ flake8-typing-imports==1.9.0
 flake8-unused-arguments==0.0.3
 flake8-variables-names==0.0.3
 interrogate==1.2.0
-ipython==7.15.0
-ipython-genutils==0.2.0
-mypy==0.770
-mypy-extensions==0.4.3
+mypy==0.790
 pdbpp==0.10.2
 pydocstyle==5.0.2
 pylint==2.5.2

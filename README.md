@@ -15,6 +15,7 @@
 [![PyPI version shields.io](https://img.shields.io/pypi/v/aiorequest.svg)](https://pypi.python.org/pypi/aiorequest/)
 [![PyPI pyversions](https://img.shields.io/pypi/pyversions/aiorequest.svg)](https://pypi.python.org/pypi/aiorequest/)
 [![PyPi downloads](https://img.shields.io/pypi/dm/aiorequest.svg)](https://pypi.python.org/pypi/aiorequest)
+[![Downloads](https://pepy.tech/badge/aiorequest)](https://pepy.tech/project/aiorequest)
 
 # aioRequest
 
